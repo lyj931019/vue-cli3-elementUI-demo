@@ -1,6 +1,7 @@
 <template>
     <div>
         <div>
+            <el-button @click="showMessage('test')">test</el-button>
             <el-table
                     :data="tableData"
                     style="width: 100%"
@@ -57,17 +58,10 @@
 
 
 <script>
+    import ElButton from "../../node_modules/element-ui/packages/button/src/button.vue";
+
     export default {
-        methods: {
-            tableRowClassName({row, rowIndex}) {
-                if (rowIndex === 1) {
-                    return 'warning-row';
-                } else if (rowIndex === 3) {
-                    return 'success-row';
-                }
-                return '';
-            }
-        },
+        components: {ElButton},
         data() {
             return {
                 tableData: [{
@@ -91,6 +85,18 @@
             }
         },
         methods: {
+            showMessage(str){
+                this.global.h();
+                this.global.showMessage(this,str);
+            },
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex === 1) {
+                    return 'warning-row';
+                } else if (rowIndex === 3) {
+                    return 'success-row';
+                }
+                return '';
+            },
             toggleSelection(rows) {
                 if (rows) {
                     rows.forEach(row => {
