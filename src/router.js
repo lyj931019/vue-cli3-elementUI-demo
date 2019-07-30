@@ -5,7 +5,7 @@ import Home from './views/Home.vue'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -36,10 +36,11 @@ router.beforeEach(function(to,from,next){
         return item.meta.isLogin
     })
     if( !login_in && require ){       // 当未登录，且跳转的页面需要登录后才能操作时，进行路由拦截
-        next({                          // 跳转登录页
-            name: "login",
-            params: { redirect: to }      // 将 要跳转（即被拦截） 的路由对象，作为参数，传递到登录页面
-        });
+        // next({                          // 跳转登录页
+        //     name: "login",
+        //     params: { redirect: to }      // 将 要跳转（即被拦截） 的路由对象，作为参数，传递到登录页面
+        // });
+        next()
     }else{                            // 已登录就正常跳转，不做任何拦截
         next()                          // 正常跳转到下一页
     }
