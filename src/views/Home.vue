@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h1 class="less">hello less</h1>
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <MyTable></MyTable>
@@ -26,3 +27,9 @@ export default {
   }
 }
 </script>
+<style scoped lang="less">
+  .less{
+    color: @base;
+  }
+
+</style>
